@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,7 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { RainbowDirectiveDirective } from './directives/rainbow-directive.directive';
 import { OnHoverItemDirective } from './directives/on-hover-item.directive';
 import { DropdownDirectiveDirective } from './directives/dropdown-directive.directive';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +31,13 @@ import { DropdownDirectiveDirective } from './directives/dropdown-directive.dire
     RainbowDirectiveDirective,
     OnHoverItemDirective,
     DropdownDirectiveDirective,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
   providers: [ShoppingListService],
   bootstrap: [AppComponent]
