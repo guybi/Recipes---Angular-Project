@@ -1,0 +1,597 @@
+
+1) What new in java 8.
+2) What new in java 9 + 10.
+3) Micro services - java micro.
+4) with spring cloud dev services.
+5) Java micro services. coordintinf servixes.
+6) Spring web flex. Spring mvc.
+7) Angular crush.
+8) Vue.JS
+
+class="btn btn-primary"
+
+
+rxjs - this pacakage offering all the observables functionality
+
+
+Ul 
+<ul class="list-group">
+	<a class="list-group-item" style="cursor">
+</ul>
+
+Tasks
+1) 
+
+
+Section 1 + Section 2
+
+plugins: 
+emmet 
+
+* Add styles
+
+npm install --save bootstrap@3
+
+
+angular.json -> styles-> "node_modules/bootstrap/dist/css/bootstrap.min.css
+. The leading ../  must not be included.
+
+* First Selector
+How angular application start
+main.ts -> AppComponent <- app.module.ts 
+
+* Angular in the end is a JS framework, changing your DOM ('HTML') at runtime.
+
+* Componenets
+create new component -> ng g c <component name>
+component is class
+
+import { Component } from '@angular/core';
+
+@Component({
+	selector: '<app-+selector name>', // should be unique
+	templateUrl: './<component name>+component.html', // could be just template: ` code !!!`  *inline template
+	styleUrls: ['./<filename>.css' , ...]// could be just style :[ ` h1{ color: green }`] // should be in array  *inline styles
+})
+export class <ComponenetName+Component> {
+	
+}
+
+need to change app module and registere the new component to app module
+need to add it to declarations array and need to add import {} from './dir name/<component name>';
+
+* working with componenet style
+class = "col-xs-12"
+
+* select element by attribute and class
+@Component({
+	Option A) selector: '[app-+selector name]', // need to be array -> attribute
+	Option B) selector: '.<selector name>' // selector by class
+	templateUrl: './<component name>+component.html', 
+	styleUrls: ['./<filename>.css' , ...]
+})
+export class <ComponenetName+Component> {
+	
+}
+
+Attribute - the injection in HTML file is: <div <selector class = "<selector name>" <selector name>> </div>
+
+[(ngModel)] = "<attribute>" // two way binding - need to import from FormsModule.
+
+*events
+(input)="funciton($event)" // on each change of the input call to function.
+
+* databinding = communication
+1) from view to logic -> event.
+	- (event) = "expression" 
+2) from logic to view -> binding.
+	- string interpolcation {{}}
+	- property binding [property] = "data"
+	
+1+2 = 2 way binding = [(ngModel)]="data"
+
+34
+*Directives 
+	directives are instructions in the dom // הורבות דום
+	<p appTurnGreen> Receives a green background! </p>
+	
+	@Directive({
+		selector: '[appTurnGreen]'
+	})
+	export class TurnGreenDirective {
+	}
+	
+	*ngIf="expresion - true/false"
+	#<local variable name> 
+	
+35 - Styling Elements Dynamically with ngStyle
+ 
+	binding data to ngStyle from logic 
+	[ngStyle]="{backgroundColor: getColor()}"
+	
+	logic 
+	getColor() {
+		return this.serverStatus === 'online' ? green : red;
+	}
+	
+	Dynmically update style!!!
+	
+36 - Applying css class dynamically with ngClass
+
+	need to add css class:
+	.online {
+		color: white; // color the sentence in white
+	}
+	[ngClass] = "{online: serverStatus === 'online'}"
+	
+37 - Outputing lists with ngFor
+	
+	logic
+	servers = ['server A', 'server B']
+	onCreateServer() {
+		servers.push(this.serverName);
+	}
+	
+	view
+	<app-server *ngFor="let server of servers; let i = index"></app-server>
+	getting the number when using in nfGor -> let i = index 
+	
+38 - Assignment 3: practicing directives	
+
+
+[ngClass]="{odd: odd %2 !== 0}"
+[ngStyle]="{backgroundColor: odd %2 !=0 ? yellow : green}"
+
+============================================================================
+First Directive
+
+import { Directive } from '@angular/core';
+
+@Directive({ 
+	selector: '[appBasicHighLight]'
+})
+export class BasicHighLightDirective implement OnInit{
+	
+	constractur(private elementRef: ElementRef) {
+		
+	}
+	
+	ngOnInit() {
+		this.elementRef.style.backgroundColor = 'green';
+	}
+}
+
+How To Use In This Directive:
+1) need to add the direcrive name class to declarations of app.module + import.
+2) Just write the selector name inside the tag.
+
+============================================================================
+
+How to improve the directive from above
+
+new direcrive in name : BetterHightLight
+
+import { Directive, Renderer2 } from '@angular/core';
+
+@Directive({ 
+	selector: '[appBetterHighLight]'
+})
+export class BetterHighLightDirective implement OnInit{
+	
+	constractur(private elementRef: ElementRef, private renderer: Renderer2) {
+		
+	}
+	
+	ngOnInit() {
+		this.renderer.setStyle(this.elementRef, 'background-color', 'blue');
+	}
+}
+Why this approche is better?
+In this way we have full access to functions of the dom and we can manage it.
+
+Render2 - Extend this base class to implement custom rendering. By default, Angular renders a template into DOM. You can use custom rendering to intercept rendering calls, or to render to something other than DOM.
+
+abstract class Renderer2 {
+  abstract data: {...}
+  destroyNode: ((node: any) => void) | null
+  abstract destroy(): void
+  abstract createElement(name: string, namespace?: string): any
+  abstract createComment(value: string): any
+  abstract createText(value: string): any
+  abstract appendChild(parent: any, newChild: any): void
+  abstract insertBefore(parent: any, newChild: any, refChild: any): void
+  abstract removeChild(parent: any, oldChild: any): void
+  abstract selectRootElement(selectorOrNode: any, preserveContent?: boolean): any
+  abstract parentNode(node: any): any
+  abstract nextSibling(node: any): any
+  abstract setAttribute(el: any, name: string, value: string, namespace?: string): void
+  abstract removeAttribute(el: any, name: string, namespace?: string): void
+  abstract addClass(el: any, name: string): void
+  abstract removeClass(el: any, name: string): void
+  abstract setStyle(el: any, style: string, value: any, flags?: RendererStyleFlags2): void
+  abstract removeStyle(el: any, style: string, flags?: RendererStyleFlags2): void
+  abstract setProperty(el: any, name: string, value: any): void
+  abstract setValue(node: any, value: string): void
+  abstract listen(target: any, eventName: string, callback: (event: any) => boolean | void): () => void
+}
+
+=====================================================================
+@HostListener - import from angular/core
+Binds a CSS event to a host listener and supplies configuration metadata. Angular invokes the supplied handler method when the host element emits the specified event, and updates the bound element with the result. If the handler method returns false, applies preventDefault on the bound element
+
+@HostListener('<event name'>)   //- eventName = mouseevent / mouseleave
+<functionName>(eventData: Event) {
+	this.renderer.setStyle(this.elementRef.nativeElement, '<property name>', '<value>', false, false)
+}
+
+=====================================================================
+Better Way for change the background color - @HostBinding
+
+====================================================================
+@HostBinding and @HostListener are two decorators in Angular that can be really useful in custom directives. @HostBinding lets you set properties on the element or component that hosts the directive, and @HostListener lets you listen for events on the host element or component.
+
+
+====================================================================
+
+Binding to Directive Binding!!!
+**** We can use in @Input() inside the direcrive!!!!!
+
+**** We can use in @Input() inside the direcrive!!!!!
+[<property binding>] = "'value'" or - <binding> = "value"
+
+
+====================================================================
+- What happend begind tje scemes on stractural directives
+1) property binding
+2) string interpolation
+3) event binding
+4) two way binding
+
+No star operation
+
+*ngIf => [ngIf]="consition"
+====================================================================
+
+TemplateRef -> give access to the element that directive was on template.
+ViewContainerRef -> give access to the view container  - View Containers are containers where one or more Views can be attached. Views represent some sort of layout to be rendered and the context under which to render it. View containers are anchored to components and are responsible for generating its output so this means that changing which views are attached to the view container affect the final rendered output of the component.
+constractur(private template: TemplateRef<any>, private vcRef: ViewContainerRef) {
+}
+
+create Custom Directive - section 7 lecture 93
+
+====================================================================
+* DropDown with direcrive:
+
+impl:
+ 
+import { Directive, HostListener, HostBinding } from '@angular/core';
+@Directive({
+  selector: '[appDropdown]'
+})
+export class DropdownDirectiveDirective {
+
+  @HostBinding('class.open') // injection open class to div.
+  isOpen = false;
+
+  @HostListener('click')
+  toggleOpen() {
+    this.isOpen = !this.isOpen;
+  }
+  constructor() { }
+}
+
+
+How to use:
+<li class="dropdown" appDropdown>
+	<a href="#" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
+	<ul class="dropdown-menu">
+		<li><a href="#">Save Data</a></li>
+		<li><a href="#">Fetch Data</a></li>
+	</ul>
+</li>
+		
+==================================================================
+Services
+
+Need to add services to providers.
+
+@Injectable() - this services is injectable or that somethingcan be injected
+Need to add this decorator to recieng service.
+If we want to inject service into service need to add Injectable() to the recive service.
+
+comminication between services and componenets
+
+* New Offer for INjectable services in Angular 6
+Services in Angular 6
+Section 9, Lecture 105
+If you're using Angular 6+ (check your package.json  to find out), you can provide application-wide services in a different way.
+
+Instead of adding a service class to the providers[]  array in AppModule , you can set the following config in @Injectable() :
+
+@Injectable({providedIn: 'root'})
+export class MyService { ... }
+This is exactly the same as:
+
+export class MyService { ... }
+and
+
+import { MyService } from './path/to/my.service';
+ 
+@NgModule({
+    ...
+    providers: [MyService]
+})
+export class AppModule { ... }
+Using this new syntax is completely optional, the traditional syntax (using providers[] ) will still work. The "new syntax" does offer one advantage though: Services can be loaded lazily by Angular (behind the scenes) and redundant code can be removed automatically. This can lead to a better performance and loading speed - though this really only kicks in for bigger services and apps in general.
+
+==================================================================
+* Router
+1) app.module.ts
+	-	add new import: import of { Routes, RouterModule } from '@angular/router';
+	-	add new const variable: 
+		const appRoutes: Routes = [ {path: '', componenet: <componentName>},
+									{path: '<name of page>', componenet: <componentName>}
+								  ]
+	-	inside @NgModule({... imports:[ ..., RouterModule.forRoot(appRoutes)] ]}
+2) Need to use is special angular directive in name - <router-outlet></router-outlet>
+
+====================================================================
+* RouterLink - router link tell to angular that this element on which router link is placed here just anchored to secure
+<router-link> is the component for enabling user navigation in a router-enabled app. The target location is specified with the to prop. It renders as an <a> tag with correct href by default, but can be configured with the tag prop. In addition, the link automatically gets an active CSS class when the target route is active.
+
+<a routerLink="/">Home</a>
+The router link catch the click on the element and prevernt default which would be to send to request and instead analyed what we passed in routerLink direcrive value.
+====================================================================
+- need to add '/' before the path name. - Realative path
+Reload the components but it does not reload the page!!!!
+
+Inside the root component we dont need to use in '/' because this is the root level.
+If we are not using in '/' the result is append the value to the path.
+for example:
+localhost:4200/servers/servers
+
+
+
+=====================================================================
+Understatnding the navigation paths
+
+=====================================================================
+
+Example for use in navbar:
+<div class="container">
+	<div class = "row">
+		<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+			<ul class="nav nav-tabs">
+				<li role="---" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
+				<li role="---" routerLinkActive="active"><a routerLink="/user">user</a></li>
+				<li role="---" routerLinkActive="active"><a routerLink="/server">Server</a></li>
+			</ul>
+		</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+</div>
+
+* routerLinkActive="active" could be on li or a
+* [routerLinkActiveOptions]="{exact: true}" -> Fix the problem when 
+===============================================================================
+* Programmatically routing to a diffrent page. ---  example 1
+
+1) inject the Router (via the constractur).(private router: Router)
+2) import the Router from '@angular/router';
+3) inside the event function:
+	onLoad<PageName>() {
+		this.router.navigate([<'/relative path'>]);
+	}
+
+
+==============================================================================
+* Programmatically routing to a diffrent page. ---  example 2
+	onReload() {
+		this.router.navigate(['path'], {relativeTo: this.route}); -> this broke it because it append the full path.
+	}						// without '/' => relative path
+	
+	+need to inject route: ActivatedRoute -> this injectes the currently active routes. - currently loaded route is a javascript object with a lot of metadata about
+	
+Why in this method we don't need to use in relative path like in routerLink?
+because the navigate method does not know on which router we are correnly on.
+The router link always know in witch componenet template.
+==============================================================================
+* Passing parameters to Routes
+
+const appRoutes: Routes = [ {path: '', componenet: <componentName>},
+							{path: 'users/:id/:name', componenet: UserComponent}}  <<<----- 
+							{path: 'servers/:id', componenet: <componentName>}
+						  ]
+	-	inside @NgModule({... imports:[ ..., RouterModule.forRoot(appRoutes)] ]}
+	
+	
+==============================================================================
+* Fetching Route Parameters
+1) need to inject the ActivatedRoute. (private route: ActivatedRoute).
+2) in ngOnInit method:
+	2.1) this.route.snapshot.params['id']
+	
+==============================================================================
+* Fetching Route Parameters Reactively
+
+	Need to use in this.route.params because params is OBSERVABLE!!!!
+	We dont know when, we dont know if and we dont know how long it will take.
+	Observable is an easy way to subscribe to some event which might happen in the future to then execute some code
+	when it happens without having to wait fir it!
+	
+	this.route.params
+		.subscrive(
+			(params: Params) => { 
+				this.user.id = params['id'];
+				this.user.name = params['name'];
+			}
+		);
+		
+===========================================================================
+* Passing Query Paramaters and Fragments -> Pass extra information
+
+app.module.ts:
+const appRoutes: Routes = [ {path: '', componenet: <componentName>},
+							{path: 'servers/:id/edit', componenet: EditServerComponent} <<<----- 
+						  ]
+
++++++  HardCoded!!!!
+html:
+<a [routeLink]="['/server', 5, 'edit']"
+	[queryParams]="{allowEdit: '1'}'"
+	fragment="loading"
+	
+++++ Programmatically!!!!
+
+this.router.navigate(['/servers'], id, 'edit'], {queryParams="{allowEdit: '1'}, fragment: 'loading'});
+
+=========================================================================
+* Retrieving Query Parameters and Fragments
+Need to inject the route: ActivatedRoute.
+we have 2 options:
+1) this.route.snapshot.queryParams and this.route.snapshot.fragment; = but it's problem because it's not observable
+2) this.rout.queryParams.subscribe(); this.rout.fragment.subscribe();
+
+
+- convert string to number: +
+=========================================================================
+* Router inside router nested routing - children
+
+const appRoutes: Routes = [ {path: '', componenet: <componentName>},
+							{path: 'users/:id/:name', componenet: UserComponent}}  
+							{path: 'servers/:id', componenet: <componentName> , children :[ <<<----- 
+									{path: ':id/:name', componenet: <componentName>}
+									{path: ':id/edit', componenet: <componentName>}
+							]}
+							
+							
+Dont forget <router-outlet></router-outlet>
+
+
+========================================================================
+* queryParamsHandling: 'preserve' - userful to knoe to make sure you not losed the information we had before.
+
+============================================================
+* Redirect and wildcard routes
+
+How to rediect the user to spesific page.
+
+Redicreting:
+PageNotFoundComponent
+
+const appRoutes: Routes = [ {path: '', componenet: <componentName>},
+							{path: 'users/:id/:name', componenet: UserComponent}}  
+							{path: 'servers/:id', componenet: <componentName> , children :[ 
+									{path: ':id/:name', componenet: <componentName>}
+									{path: ':id/edit', componenet: <componentName>}
+							]},
+							{path: 'not-found', componenet: PageNotFoundComponent},
+							{path: '**', redirectTo: '/not-found'},  <<--- Catch all the paths you are dont know!!
+							}
+							
+
+==================================================================
+* Outsourcing the Route Configuration
+
+import...*
+import { Routes, RouterModule } from '@angular/router'
+const appRoutes: Routes = [ {path: '', componenet: <componentName>},
+							{path: 'users/:id/:name', componenet: UserComponent}}  
+							{path: 'servers/:id', componenet: <componentName> , children :[ 
+									{path: ':id/:name', componenet: <componentName>}
+									{path: ':id/edit', componenet: <componentName>}
+							]},
+							{path: 'not-found', componenet: PageNotFoundComponent},
+							{path: '**', redirectTo: '/not-found'},  <<--- Catch all the paths you are dont know!!
+							}
+							
+
+@NgModule({
+	imports: [
+		RouterModule.forRoot(appRoutes);
+	],
+	exports: [RouterModule] // from this module if i were to add this module to the imports of the never module what should be accessible to his module which imports this module.
+})
+export class AppRoutingModule {
+	
+}
+
+
++ app.module.ts
+need to remove the appRoutes
+inside @NgModule({... imports:[ ..., AppRoutingModule, ..,)] ]} <<<-----
+
+======================================================================
+* Route Guard - protect on the routes
+* An Introduction to Guards
+
+import ....
+
+@Injectable()
+auth-guard.service.ts
+CanActivate interface
+import { CanActivate } from '@angular/router' 
+export class AuthGuard implements CanActivate {
+
+constractur(private authService: AuthService, private router: Router);
+
+
+canActivate(route: ActivatedRouteSnapshot, 
+			state: RouteStartSnapshot): Observable<boolean> | Promise<boolean> } boolean {
+				return this.authService.isAuthenticated()
+					.then{
+						(authenticated: boolean) => {
+							if (authenticated) {
+								return true;
+							} else {
+								this.router(['/']);
+							}
+						}
+					};
+	
+	}
+}
+
+---
+Fake service!!!
+export class AuthService {
+	loggIn = false;
+		
+	isAuthenticated() {
+		const promise = new Promise(
+			(resolve, reject) => {
+				setTimeout( {
+						resolve(this.loggIn);
+					}
+					, 800)
+			}
+		);
+		return promise;
+	}
+	login() {
+		this.loggIn = true;
+	}
+	
+	layout() {
+		this.loggIn = false;
+	}
+	
+}
+
+---
+Need to add to appRoutes!!
+canActivate: [AuthGuard] in {path: 'users/:id/:name', componenet: UserComponent}}  
+
+
+need to add the AuthService and AuthGuard to providerd of app.module!
+
+
+-----------------
+
+Protecting Child (Nested) Routes with canActivateChild
++ implement the method canActivateChild and inside call the canActivate with the params from canActivateChild
+Need to add to appRoutes!!
+ in {path: 'users/:id/:name', canActivateChild: [AuthGuard], componenet: UserComponent}}  
