@@ -12,8 +12,9 @@
   <div class="col-xs-12">
     <app-recipe-item 
       appOnHoverItem
-      *ngFor="let recipeEl of recipes"
+      *ngFor="let recipeEl of recipes; let i = index"
       [recipe]="recipeEl"
+      [index]="i"
     ></app-recipe-item>
   </div>
 </div>
