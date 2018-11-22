@@ -19,6 +19,7 @@ import { DropdownDirectiveDirective } from './directives/dropdown-directive.dire
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RecipesStartComponent } from './recipes/recipes-start/recipes-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { AnderstandingObservablesComponent } from './anderstanding-observables/anderstanding-observables.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     PageNotFoundComponent,
     RecipesStartComponent,
     RecipeEditComponent,
+    AnderstandingObservablesComponent,
   ],
   imports: [
     BrowserModule,
