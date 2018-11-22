@@ -18,6 +18,7 @@ import { OnHoverItemDirective } from './directives/on-hover-item.directive';
 import { DropdownDirectiveDirective } from './directives/dropdown-directive.directive';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RecipesStartComponent } from './recipes/recipes-start/recipes-start.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { RecipesStartComponent } from './recipes/recipes-start/recipes-start.com
     DropdownDirectiveDirective,
     PageNotFoundComponent,
     RecipesStartComponent,
+    RecipeEditComponent,
   ],
   imports: [
     BrowserModule,
