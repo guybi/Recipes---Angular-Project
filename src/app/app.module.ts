@@ -21,6 +21,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RecipesStartComponent } from './recipes/recipes-start/recipes-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { AnderstandingObservablesComponent } from './anderstanding-observables/anderstanding-observables.component';
+import { DataStorageService } from 'src/app/shared/data-storage';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { AnderstandingObservablesComponent } from './anderstanding-observables/a
     AppRoutingModule,
 
   ],
-  providers: [ShoppingListService, RecipeService],
+  providers: [ShoppingListService, RecipeService, DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
