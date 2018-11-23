@@ -7,7 +7,7 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
   templateUrl: './anderstanding-observables.component.html',
   styleUrls: ['./anderstanding-observables.component.css']
 })
-export class AnderstandingObservablesComponent implements {
+export class AnderstandingObservablesComponent {
 
   // constructor() { }
   // customObsSubscription: Subscription;
@@ -40,8 +40,9 @@ export class AnderstandingObservablesComponent implements {
   //     }
   //   );
   // }
-  ngOnDestroy() {
+  // ngOnDestroy() {
   //   this.customObsSubscription.unsubscribe();
-  }
+  // }
 
 }
+
