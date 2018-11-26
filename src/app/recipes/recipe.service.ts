@@ -10,20 +10,14 @@ export class RecipeService {
     recipesChanged = new Subject<Recipe[]>();
 
     private recipes: Recipe[] = [
-        new Recipe('A Test Recipe1',
-                    'This is simply a test',
-                    'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
+        new Recipe('Steak',
+                    'Whether your preference is a butter-soft fillet steak, flavour-packed sirloin or thriftier cut like bavette, rump or onglet, quick-cooking and constant attention should be paid when cooking your beef. With only a few minutes leeway between rare and well-done, timing is key. Weve put together some tips to help you from start to finish.',
+                    'http://www.sabergrills.com/better-barbecue-blog/wp-content/uploads/2017/04/grilled-tomahawk-steak.jpg',
                 [
                    new Ingredient('Meat', 1),
                    new Ingredient('French Fries', 1),
-                ]),
-        new Recipe('A Test Recipe2',
-                    'This is simply a test',
-                    'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
-                    [
-                        new Ingredient('Buns', 2),
-                        new Ingredient('Meat', 1),
-                     ]),
+                ])
+
       ];
 
     constructor(private shoppingListService: ShoppingListService) {}

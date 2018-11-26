@@ -1,3 +1,6 @@
+import { AuthFakeService } from 'src/app/auth.service';
+import { AuthFireBaseService } from 'src/app/auth/auth.service';
+import { AuthGuard } from './auth-guard.service';
 import { RecipeService } from './recipes/recipe.service';
 import { AppRoutingModule } from './app-routing.module';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
@@ -22,6 +25,9 @@ import { RecipesStartComponent } from './recipes/recipes-start/recipes-start.com
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { AnderstandingObservablesComponent } from './anderstanding-observables/anderstanding-observables.component';
 import { DataStorageService } from 'src/app/shared/data-storage';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { AuthRecipesGuard } from 'src/app/auth/auth-recipes-guard.service';
 
 @NgModule({
   declarations: [
@@ -40,6 +46,8 @@ import { DataStorageService } from 'src/app/shared/data-storage';
     RecipesStartComponent,
     RecipeEditComponent,
     AnderstandingObservablesComponent,
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +57,13 @@ import { DataStorageService } from 'src/app/shared/data-storage';
     AppRoutingModule,
 
   ],
-  providers: [ShoppingListService, RecipeService, DataStorageService],
+  providers: [ShoppingListService, 
+              RecipeService, 
+              DataStorageService, 
+              AuthFakeService, 
+              AuthGuard, 
+              AuthFireBaseService,
+              AuthRecipesGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
