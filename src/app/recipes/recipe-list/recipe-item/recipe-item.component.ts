@@ -15,4 +15,8 @@ export class RecipeItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  trackByRecipe(index: number, recipe: Recipe) {
+    return index;
+  }
+
 }

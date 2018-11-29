@@ -95,4 +95,8 @@ export class RecipeEditComponent implements OnInit {
   onClickCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
    }
+
+   trackByIngredients(index, item) {
+     return index;
+   }
 }
