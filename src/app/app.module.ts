@@ -1,3 +1,5 @@
+import { AuthRoutingModule } from './auth/auth-routing.module';
+import { AuthModule } from './auth/auth.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { RecipesRoutingModule } from './recipes/recipes-routing.module';
 import { RecipesModule } from './recipes/recipes.module';
@@ -21,8 +23,6 @@ import { OnHoverItemDirective } from './directives/on-hover-item.directive';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AnderstandingObservablesComponent } from './anderstanding-observables/anderstanding-observables.component';
 import { DataStorageService } from 'src/app/shared/data-storage';
-import { SigninComponent } from './auth/signin/signin.component';
-import { SignupComponent } from './auth/signup/signup.component';
 import { AuthRecipesGuard } from 'src/app/auth/auth-recipes-guard.service';
 
 import { SharedModule } from './shared/shared.module';
@@ -33,18 +33,17 @@ import { SharedModule } from './shared/shared.module';
     HeaderComponent,
     RainbowDirectiveDirective,
     PageNotFoundComponent,
-    AnderstandingObservablesComponent,
-    SigninComponent,
-    SignupComponent
+    AnderstandingObservablesComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpModule,
     RecipesModule,
     AppRoutingModule,
     SharedModule,
-    ShoppingListModule
+    ShoppingListModule,
+    AuthModule,
+    AuthRoutingModule
   ],
   providers: [
               ShoppingListService,
