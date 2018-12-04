@@ -1,5 +1,4 @@
 import { RecipesRoutingModule } from './recipes/recipes-routing.module';
-import { DropdownDirectiveDirective } from './directives/dropdown-directive.directive';
 import { RecipesModule } from './recipes/recipes.module';
 import { AuthFakeService } from 'src/app/auth.service';
 import { AuthFireBaseService } from 'src/app/auth/auth.service';
@@ -25,6 +24,8 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthRecipesGuard } from 'src/app/auth/auth-recipes-guard.service';
 
+import { SharedModule } from './shared/shared.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,8 +37,7 @@ import { AuthRecipesGuard } from 'src/app/auth/auth-recipes-guard.service';
     PageNotFoundComponent,
     AnderstandingObservablesComponent,
     SigninComponent,
-    SignupComponent,
-    DropdownDirectiveDirective
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +45,7 @@ import { AuthRecipesGuard } from 'src/app/auth/auth-recipes-guard.service';
     HttpModule,
     RecipesModule,
     AppRoutingModule,
+    SharedModule
   ],
   providers: [
               ShoppingListService,
