@@ -8,7 +8,7 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { ShoppingListComponent } from 'src/app/shopping-list/shopping-list.component';
-import { AuthGuard } from './auth-guard.service'
+import { AuthGuard } from './auth-guard.service';
 import { SigninComponent } from 'src/app/auth/signin/signin.component';
 import { SignupComponent } from 'src/app/auth/signup/signup.component';
 import { AuthRecipesGuard } from 'src/app/auth/auth-recipes-guard.service';
@@ -16,7 +16,6 @@ import { AuthRecipesGuard } from 'src/app/auth/auth-recipes-guard.service';
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   { path: 'shopping-list', component: ShoppingListComponent },
-  // { path: 'understanding-observables', component: AnderstandingObservablesComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   // { path: 'not-found', component: PageNotFoundComponent },

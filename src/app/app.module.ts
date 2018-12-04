@@ -1,3 +1,4 @@
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { RecipesRoutingModule } from './recipes/recipes-routing.module';
 import { RecipesModule } from './recipes/recipes.module';
 import { AuthFakeService } from 'src/app/auth.service';
@@ -30,10 +31,7 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
     RainbowDirectiveDirective,
-    OnHoverItemDirective,
     PageNotFoundComponent,
     AnderstandingObservablesComponent,
     SigninComponent,
@@ -45,7 +43,8 @@ import { SharedModule } from './shared/shared.module';
     HttpModule,
     RecipesModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    ShoppingListModule
   ],
   providers: [
               ShoppingListService,

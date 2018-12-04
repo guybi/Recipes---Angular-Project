@@ -1,13 +1,16 @@
+import { OnHoverItemDirective } from './../directives/on-hover-item.directive';
 import { DropdownDirectiveDirective } from './../directives/dropdown-directive.directive';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 @NgModule({
     declarations: [
-        DropdownDirectiveDirective
+        DropdownDirectiveDirective,
+        OnHoverItemDirective
     ],
     exports: [
         CommonModule,
-        DropdownDirectiveDirective
+        DropdownDirectiveDirective,
+        OnHoverItemDirective
     ]
 })
 export class SharedModule {}
