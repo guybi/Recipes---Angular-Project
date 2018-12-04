@@ -11,7 +11,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class ShoppingListComponent implements OnInit, OnDestroy {
 
   ingredients: Ingredient[];
-  private subscription: Subscription
+  private subscription: Subscription;
   constructor(private shoppingListService: ShoppingListService) { }
 
   ngOnInit() {

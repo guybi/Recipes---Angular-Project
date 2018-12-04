@@ -11,11 +11,8 @@ export class AuthFireBaseService {
     signupUser(email: string, password: string) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .catch(
-                error => 
-                {
-                    console.log(error);
-                }
-            )
+                error => console.log(error)
+            );
     }
 
     signinUser(email: string, password: string) {
@@ -28,13 +25,11 @@ export class AuthFireBaseService {
                             (token: string) => {
                                 this.token = token;
                             }
-                        )
+                        );
                 }
             ).catch(
-                error => {
-                    console.log(error);
-                }
-            )
+                error => console.log(error)
+            );
     }
 
     getIdToken() {

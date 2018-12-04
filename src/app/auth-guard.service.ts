@@ -8,7 +8,7 @@ import { Injectable } from "@angular/core";
 import { PACKAGE_ROOT_URL } from "@angular/core/src/application_tokens";
 
 @Injectable()
-export class AuthGuard implements CanActivate{
+export class AuthGuard implements CanActivate {
   constructor(private authFakeService: AuthFakeService, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot,

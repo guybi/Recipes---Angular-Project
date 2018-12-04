@@ -15,18 +15,12 @@ import { AuthRecipesGuard } from 'src/app/auth/auth-recipes-guard.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-  { path: 'recipes', component: RecipesComponent, children: [
-    { path: '', component: RecipesStartComponent },
-    { path: 'new', component: RecipeEditComponent },
-    { path: ':id', component: RecipeDetailComponent },
-    { path: ':id/edit', component: RecipeEditComponent },
-  ]},
   { path: 'shopping-list', component: ShoppingListComponent },
-  { path: 'understanding-observables', component: AnderstandingObservablesComponent },
+  // { path: 'understanding-observables', component: AnderstandingObservablesComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'not-found', component: PageNotFoundComponent },
-  { path: '**', redirectTo: '/not-found' },
+  // { path: 'not-found', component: PageNotFoundComponent },
+  // { path: '**', redirectTo: '/not-found' },
 ];
 
 @NgModule({
