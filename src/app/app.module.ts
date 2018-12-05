@@ -1,8 +1,8 @@
+import { HomeComponent } from './home/home.component';
 import { AuthRoutingModule } from './auth/auth-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { RecipesRoutingModule } from './recipes/recipes-routing.module';
-import { RecipesModule } from './recipes/recipes.module';
 import { AuthFakeService } from 'src/app/auth.service';
 import { AuthFireBaseService } from 'src/app/auth/auth.service';
 import { AuthGuard } from './auth-guard.service';
@@ -33,17 +33,16 @@ import { SharedModule } from './shared/shared.module';
     HeaderComponent,
     RainbowDirectiveDirective,
     PageNotFoundComponent,
-    AnderstandingObservablesComponent
+    AnderstandingObservablesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    RecipesModule,
     AppRoutingModule,
     SharedModule,
     ShoppingListModule,
     AuthModule,
-    AuthRoutingModule
   ],
   providers: [
               ShoppingListService,

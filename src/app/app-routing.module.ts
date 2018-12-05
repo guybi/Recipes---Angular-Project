@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -14,7 +15,8 @@ import { SignupComponent } from 'src/app/auth/signup/signup.component';
 import { AuthRecipesGuard } from 'src/app/auth/auth-recipes-guard.service';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/recipes', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
+  { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule' },
   { path: 'shopping-list', component: ShoppingListComponent },
   // { path: 'not-found', component: PageNotFoundComponent },
   // { path: '**', redirectTo: '/not-found' },
