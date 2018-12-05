@@ -16,7 +16,7 @@ import { AuthRecipesGuard } from 'src/app/auth/auth-recipes-guard.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule' },
+  { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule', canLoad: [AuthRecipesGuard]},
   { path: 'shopping-list', component: ShoppingListComponent },
   // { path: 'not-found', component: PageNotFoundComponent },
   // { path: '**', redirectTo: '/not-found' },
