@@ -12,9 +12,9 @@ import { RecipesComponent } from './recipes.component';
 const recipesRoutes: Routes = [
     { path: '', component: RecipesComponent, children: [
       { path: '', component: RecipesStartComponent },
-      { path: 'new', component: RecipeEditComponent, canActivate: [AuthRecipesGuard] },
+      { path: 'new', component: RecipeEditComponent, canLoad: [AuthRecipesGuard] },
       { path: ':id', component: RecipeDetailComponent },
-      { path: ':id/edit', component: RecipeEditComponent, canActivate: [AuthRecipesGuard] },
+      { path: ':id/edit', component: RecipeEditComponent, canLoad: [AuthRecipesGuard] },
     ] },
   ];
 
